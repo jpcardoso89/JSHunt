@@ -24,7 +24,6 @@ export default function Home(props) {
   const getProducts = async (page = 1) => {
     const response = await api.get(`/products?page=${page}`);
     const { docs, ...productInfo } = response.data;
-    console.log(docs);
     setProducts(prevState => ({
       docs: [...prevState.docs, ...docs],
       productInfo,
@@ -34,6 +33,7 @@ export default function Home(props) {
 
   const renderItem = ({ item }) => (
     <View style={styles.productContainer}>
+      <StatusBar backgroundColor="#DA552F" barStyle="light-content" />
       <Text style={styles.productTitle}>{item.title}</Text>
       <Text style={styles.productDescription}>{item.description}</Text>
 
